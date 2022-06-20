@@ -1,0 +1,147 @@
+(defwindow theme-menu
+           :monitor 0
+           :geometry (geometry :x "0px"
+                               :y "0px"
+                               :width "20%"
+                               :height "30%"
+                               :anchor "center")
+           :stacking "fg"
+           ;:reserve (struts :distance "40px" :side "top")
+           :windowtype "dialog"
+           :wm-ignore false
+    (theme-widget)
+  )
+  
+(defwidget theme-widget []
+    (box :orientation "vertical"
+       :valign "start"
+       :class "theme-holder"
+       :spacing "20"
+        (box :orientation "horizontal"
+             :halign "top"
+             :halign "left"
+             :class "window-decs"
+             (button :onclick "xeww close-all"
+                     :class "ec"
+                     "X"
+             )
+             (button :onclick "xeww close theme-menu-fs && xeww open theme-menu"
+                     :class "em"
+                     "-"
+             )
+             (button :onclick "xeww close theme-menu && xeww open theme-menu-fs"
+                     :class "eM"
+                     "+"
+             )
+        )
+        (box :orientation "vertical"
+             :halign "top"
+             :class "theme-decay"
+             (button :onclick "themer -t decay && xeww close theme-menu"
+                     :class "bd"
+                     "Decay"
+             )
+        )
+    
+        (box :orientation "vertical"
+             :halign "top"
+             :class "theme-dark-decay"
+             (button :onclick "themer -t dark-decay && xeww close theme-menu"
+                     :class "bdd"
+                     "Dark Decay"
+             )
+        )
+        (box :orientation "vertical"
+             :halign "top"
+             :class "theme-nord"
+             (button :onclick "themer -t nord && xeww close theme-menu"
+                     :class "bn"
+                     "Nord"
+             )
+        )
+    
+        (box :orientation "vertical"
+             :halign "top"
+             :class "theme-tokyo-night"
+             (button :onclick "themer -t tokyo-night && xeww close theme-menu"
+                     :class "btn"
+                     "Tokyo Night"
+             )
+        )
+    )
+)
+
+(defwindow theme-menu-fs
+           :monitor 0
+           :geometry (geometry :x "0px"
+                               :y "0px"
+                               :width "100%"
+                               :height "100%"
+                               :anchor "center")
+           :stacking "fg"
+           ;:reserve (struts :distance "40px" :side "top")
+           :windowtype "dialog"
+           :wm-ignore false
+    (theme-widget)
+  )
+  
+(defwindow bat-menu
+           :monitor 0
+           :geometry (geometry :x "-24%"
+                               :y "45px"
+                               :width "20%"
+                               :height "45px"
+                               :anchor "top right")
+           :stacking "fg"
+           ;:reserve (struts :distance "40px" :side "top")
+           :windowtype "dialog"
+           :wm-ignore false
+           (bat-widget)
+  )
+(defpoll bat-status :interval "1s"
+              :initial "false"  ; optional, defaults to poll at startup  ; optional, defaults to 'true'
+  `exec ~/.config/eww/scripts/bat --state`)
+(defpoll bat-name :interval "10h"
+  `exec ~/.config/eww/scripts/bat --name`)
+(defpoll bat-cap :interval "1h"
+  `exec ~/.config/eww/scripts/bat --cap`)
+(defpoll bat-charge :interval "1m"
+  `exec ~/.config/eww/scripts/bat --charge`)
+(defwidget bat-widget []  
+    (box :orientation "vertical"
+         :valign "start"
+         :class "bw"
+         :spacing "15"
+         (box :orientation "horizontal"
+              :valign "start"
+              :halign "start"
+              :class "charging"
+              :spacing "5"
+              "Name: ${bat-name}"
+        )
+        (box :orientation "horizontal"
+              :valign "start"
+              :halign "start"
+              :class "charging"
+              :spacing "5"
+              "Charging: ${bat-status}"
+        )
+        (box :orientation "horizontal"
+              :valign "start"
+              :halign "start"
+              :class "charging"
+              :spacing "5"
+              "Maximum Capacity: ${bat-cap}%"
+        )
+        (box  :orientation "vertical"
+              :valign "start"
+              :halign "start"
+              :class "charging"
+              :spacing "5"
+              (progress :value "${bat-charge}"
+                        :hexpand "true"
+                        :tooltip "Battery Charge: ${bat-charge}"
+              )
+        )
+    )
+)

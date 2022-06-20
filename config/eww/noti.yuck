@@ -1,0 +1,65 @@
+(defwindow notifi
+           :monitor 0
+           :geometry (geometry :x "-10px"
+                               :y "50px"
+                               :width "25%"
+                               :height "85%"
+                               :anchor "top right")
+           :stacking "fg"
+           ;:reserve (struts :distance "40px" :side "top")
+           :windowtype "normal"
+           :wm-ignore false
+  
+  (notiwidget))
+
+(defwidget notiwidget []
+  (box :orientation "vertical"
+       :valign "end"
+       :class "notiHolder"
+       :spacing "20"
+        (box :orientation "vertical"
+             :halign "top"
+             :class "noti1"
+          (box :orientation "horizontal" 
+               :halign "top"
+               :valign "center"
+               :class "noti1t"
+              "title"
+            )
+          "description"
+    )
+    (box :orientation "vertical"
+             :halign "top"
+             :class "noti1"
+          (box :orientation "horizontal" 
+               :halign "top"
+               :valign "center"
+               :class "noti1t"
+              "title"
+            )
+          "description"
+    ) 
+    (box :orientation "vertical"
+             :halign "top"
+             :class "noti1"
+          (box :orientation "horizontal" 
+               :halign "top"
+               :valign "center"
+               :class "noti1t"
+              "title"
+            )
+          "description"
+    )
+    (box :orientation "vertical"
+             :halign "top"
+             :class "noti1"
+          (box :orientation "horizontal" 
+               :halign "top"
+               :valign "center"
+               :class "noti1t"
+              "title"
+            )
+          "description"
+    )
+  )
+)

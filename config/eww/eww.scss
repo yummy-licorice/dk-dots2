@@ -1,0 +1,55 @@
+* {
+  font-family: "Iosevka Nerd Font";
+}
+
+window {
+  background: #101419;
+  color: #73c291;
+  border-radius: 7px;
+  border: 3px solid #73c291;
+}
+
+.notiHolder {
+  padding-top: 20px;
+  padding-right: 20px;
+  padding-left: 20px;
+  padding-bottom: 20px;
+  border-radius: 7px;
+}
+
+.noti1 {
+  border: 3px solid #80A0C0;
+  border-radius: 7px;
+}
+
+.noti1t {
+  padding: 5px;
+  font-size: 1.25rem;
+}
+
+.theme-holder {
+  padding-top: 20px;
+  padding-right: 20px;
+  padding-left: 20px;
+  padding-bottom: 20px;
+}
+
+.em, .ec, .eM {
+  background: #101419;
+}
+
+.bd, .bdd, .btn, .bn {
+  border-radius: 7px;
+  background: #13171c;
+}
+
+.bw {
+  padding-top: 20px;
+  padding-right: 20px;
+  padding-left: 20px;
+  padding-bottom: 20px;
+  font-size: 17px;
+}
+
+
+
